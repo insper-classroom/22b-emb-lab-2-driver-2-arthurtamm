@@ -157,9 +157,9 @@ const uint32_t ul_mask)
 }
 
 void _delay_ms(int ms){
-	double p = ms/1000;
+	unsigned long p = F_CPU/1000*ms;
 	
-	for(int i=0; i< p*F_CPU; i++){
+	for(int i=0; i<  p; i++){
 		asm("NOP");
 	}
 }
@@ -213,9 +213,9 @@ int main(void) {
     if (!_pio_get(BUT1_PIO, PIO_INPUT,
                  BUT1_PIO_IDX_MASK)) { // Caso aperte Botao 1
       for (int i = 0; i < 5; i++) {
-        _pio_set(LED1_PIO, LED1_PIO_IDX_MASK);
-        _delay_ms(200);
         _pio_clear(LED1_PIO, LED1_PIO_IDX_MASK);
+        _delay_ms(200);
+        _pio_set(LED1_PIO, LED1_PIO_IDX_MASK);
         _delay_ms(200);
       }
       _pio_set(LED1_PIO, LED1_PIO_IDX_MASK);
@@ -223,9 +223,9 @@ int main(void) {
     if (!_pio_get(BUT2_PIO, PIO_INPUT,
                  BUT2_PIO_IDX_MASK)) { // Caso aperte Botao 2
       for (int i = 0; i < 5; i++) {
-        _pio_set(LED2_PIO, LED2_PIO_IDX_MASK);
-        _delay_ms(200);
         _pio_clear(LED2_PIO, LED2_PIO_IDX_MASK);
+        _delay_ms(200);
+        _pio_set(LED2_PIO, LED2_PIO_IDX_MASK);
         _delay_ms(200);
       }
       _pio_set(LED2_PIO, LED2_PIO_IDX_MASK);
@@ -233,9 +233,9 @@ int main(void) {
     if (!_pio_get(BUT3_PIO, PIO_INPUT,
                  BUT3_PIO_IDX_MASK)) { // Caso aperte Botao 3
       for (int i = 0; i < 5; i++) {
-        _pio_set(LED3_PIO, LED3_PIO_IDX_MASK);
-        _delay_ms(200);
         _pio_clear(LED3_PIO, LED3_PIO_IDX_MASK);
+        _delay_ms(200);
+        _pio_set(LED3_PIO, LED3_PIO_IDX_MASK);
         _delay_ms(200);
       }
       _pio_set(LED3_PIO, LED3_PIO_IDX_MASK);
